@@ -6,7 +6,7 @@ import userRouter from "./module/user/user.router.js"
     app.use(express.json())
     //routing
     app.use('/auth',userRouter)
-   app.all("/",(req,res,next)=>{  return res.json({message:"invalid url"})})
+   app.all("",(req,res,next)=>{  return res.json({message:"invalid url"})})
     app.use(globalErrorHandling)
  }
-//src
+//sr
