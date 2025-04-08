@@ -8,5 +8,5 @@ userRouter.post('/signups',isvalid(signupVal),asynchandler(signup))
 userRouter.get('/verify/:token',asynchandler(verifyAccount))
 userRouter.post('/login',isvalid(loginVal),asynchandler(login))
 userRouter.post('/forget',isvalid(forgetpassVal),asynchandler(forgetPassword))
-userRouter.post('/reset',isvalid(resetVal),asynchandler(resetPassword))
+userRouter.put('/reset',isvalid(resetVal),asynchandler(resetPassword))
 export default userRouter
