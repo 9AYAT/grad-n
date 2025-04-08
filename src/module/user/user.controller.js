@@ -83,7 +83,7 @@ await sendEmail({to:email,subject:"forget password" ,html:`<h1>u request forget 
        return res.status(200).json({ message: 'OTP sent to email' }); }
         //reset password\
  export const resetPassword=async(req,res,next)=>{
-   const{otp,newPassword}=req.body
+   const{otp,newPassword,email}=req.body
    //check email
    const user=await User.findOne({email})
    // Find user by OTP
