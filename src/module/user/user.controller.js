@@ -108,6 +108,6 @@ await sendEmail({to:email,subject:"forget password" ,html:`<h1>u request forget 
   //user.otp=undefined
  // user.expireDateOtp=undefined
   await user.save()
-  await User.updateOne({ _id: user._id },{password:hashedPassword,$unset:{otp:"",expireDateOtp:""}})
+  await User.updateOne({email },{password:hashedPassword,$unset:{otp:"",expireDateOtp:""}})
   return res.status(200).json({message:"pass updated successfully",success:true})
  }
