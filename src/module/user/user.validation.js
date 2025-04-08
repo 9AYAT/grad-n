@@ -20,9 +20,10 @@ export const loginVal=joi.object({
 //forget pasword
 export const forgetpassVal=joi.object({
   // otp:generalFields.string
-   email:generalfield.email,})
+   email:generalfield.email.required(),})
    //reset password
    export const resetVal=joi.object({
     newPassword:generalfield.password.required(),
-    otp:generalfield.name.required()
+    otp:generalfield.name.required(),
+    email:generalfield.email.required()
    })

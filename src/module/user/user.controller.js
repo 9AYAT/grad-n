@@ -85,9 +85,9 @@ await sendEmail({to:email,subject:"forget password" ,html:`<h1>u request forget 
  export const resetPassword=async(req,res,next)=>{
    const{otp,newPassword}=req.body
    //check email
-   //const user=await User.findOne({email})
+   const user=await User.findOne({email})
    // Find user by OTP
-   const user = await User.findOne({ otp });
+   //const user = await User.findOne({ otp });
    if(!user){
     return next(new AppError(messages.user.notfound,404))
    }
