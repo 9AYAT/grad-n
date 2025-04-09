@@ -1,2 +1,3 @@
 import userRouter from "./user/user.router.js"
-export{userRouter}
+import changeRouter from "./changes/changes.router.js"
+export{userRouter,changeRouter}
