@@ -4,11 +4,13 @@ import { connectDb } from "./db/connection.js"
 import { initapp } from "./src/initApp.js"
 import cors from 'cors';
 import dotenv from "dotenv"
+import bodyParser from "body-parser";
 const app=express()
 app.use(cors({
     origin: 'http://localhost:4200',
     credentials: true 
 }));
+app.use(bodyParser.json());
 dotenv.config({path:path.resolve('./config/.env')})
 connectDb()
 initapp(app,express)
