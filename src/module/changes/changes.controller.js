@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import { AppError } from '../../utils/appError.js'
 import { User } from '../../../db/index.js'
 import { messages } from '../../utils/constant/messages.js'
-export const changePassword=async(req,response,next)=>{
+export const changePassword=async(req,res,next)=>{
     //get data 
     const {oldPassword,newPassword}=req.body
     const userId=req.authUser._id
