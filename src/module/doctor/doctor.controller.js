@@ -9,5 +9,5 @@ export const AddDoctor=async(req,res,next)=>{
         price
     })
     await doctor.save()
-    return res.staus(201).json({messsage:'doctor added successfully',success:true})
+    return res.status(201).json({messsage:'doctor added successfully',success:true})
 }
