@@ -1,7 +1,7 @@
-import { model } from "mongoose"
+import { Doctor } from "../../../db/index.js"
 export const AddDoctor=async(req,res,next)=>{
     const{name,phone,specialist,location,price}=req.body
-    const doctor=new model({
+    const doctor=new Doctor({
         name,
         phone,
         specialist,
