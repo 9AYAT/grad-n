@@ -6,6 +6,7 @@ const doctorSchema=new Schema({
         required:true,
         trim:true
     },
+    specialty:{type:String,required:true},
     phone:{
         type:String,
         required:true
@@ -22,10 +23,10 @@ const doctorSchema=new Schema({
           type: String
         }
       },
-    price: 
-    { type: Number, required: true },
-
-
+    price: {
+    amount: { type: Number, required: true },
+    currency: { type: String, default: "EGP" }
+  }
 },{timestamps:true})
 //model
 export const Doctor=model('Doctor',doctorSchema)
