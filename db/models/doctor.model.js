@@ -11,13 +11,17 @@ const doctorSchema=new Schema({
         required:true
     },
     specialist:{
-        type:String,
+        type:[String],
         required:true
     },
     location:{
-        type:String,
-        required:true
-    },
+        city: {
+          type: String
+        },
+        address: {
+          type: String
+        }
+      },
     price: 
     { type: Number, required: true },
 
