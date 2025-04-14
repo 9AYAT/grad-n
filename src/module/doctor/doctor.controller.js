@@ -12,3 +12,8 @@ export const AddDoctor=async(req,res,next)=>{
     await doctor.save()
     return res.status(201).json({messsage:'doctor added successfully',success:true})
 }
+//get doctors
+export const GetAllDoctor=async(req,res,next)=>{
+    const doctors=await Doctor.find()
+    return res.status(201).json({messsage:'doctor get successfully',success:true})
+}
