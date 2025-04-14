@@ -15,5 +15,5 @@ export const AddDoctor=async(req,res,next)=>{
 //get doctors
 export const GetAllDoctor=async(req,res,next)=>{
     const doctors=await Doctor.find()
-    return res.status(201).json({messsage:'doctor get successfully',success:true})
+    return res.status(201).json({messsage:'doctor get successfully',success:true,data:doctors})
 }
