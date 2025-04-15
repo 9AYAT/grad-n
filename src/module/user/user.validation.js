@@ -29,7 +29,7 @@ export const forgetpassVal=joi.object({
    })
    export const UpdateMyProfileVal=joi.object({
     email:generalfield.email,
-  password:generalfield.password,
+  name:generalfield.name,
   DOB:generalfield.DOB,
   phone:generalfield.phone
    })
