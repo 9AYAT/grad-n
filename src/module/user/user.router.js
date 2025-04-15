@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { isvalid } from "../../middleware/validtion.js";
 import { asynchandler } from "../../middleware/asynchandler.js";
-import { forgetpassVal, loginVal,resetVal,signupVal } from "./user.validation.js";
-import { forgetPassword, getMyProfile, login, resetPassword, signup, verifyAccount } from "./user.controller.js";
+import { forgetpassVal, loginVal,resetVal,signupVal, UpdateMyProfileVal } from "./user.validation.js";
+import { forgetPassword, getMyProfile, login, resetPassword, signup, UpdateMyProfile, verifyAccount } from "./user.controller.js";
 import { isAuthenticated } from "../../middleware/authentication.js";
 import { isAuthorized } from "../../middleware/authrization.js";
 import { roles } from "../../utils/constant/enum.js";
@@ -13,4 +13,5 @@ userRouter.post('/login',isvalid(loginVal),asynchandler(login))
 userRouter.post('/forget',isvalid(forgetpassVal),asynchandler(forgetPassword))
 userRouter.put('/reset',isvalid(resetVal),asynchandler(resetPassword))
 userRouter.get('/getMyProfile',isAuthenticated(),isAuthorized(roles.USER),asynchandler(getMyProfile))
+userRouter.put('/update',isAuthenticated(),isAuthorized(roles.USER),isvalid(UpdateMyProfileVal),asynchandler(UpdateMyProfile))
 export default userRouter

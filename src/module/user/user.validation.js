@@ -27,3 +27,9 @@ export const forgetpassVal=joi.object({
     otp:generalfield.name.required(),
     email:generalfield.email.required()
    })
+   export const UpdateMyProfileVal=joi.object({
+    email:generalfield.email,
+  password:generalfield.password,
+  DOB:generalfield.DOB,
+  phone:generalfield.phone
+   })

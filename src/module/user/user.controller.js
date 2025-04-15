@@ -116,3 +116,19 @@ await sendEmail({to:email,subject:"forget password" ,html:`<h1>u request forget 
     const profiles=await User.findById(req.authUser._id).select("name email phone DOB")
     return res.status(200).json({message:"profile is recieved successfully",success:true,data:profiles})
  }
+ //update profile
+ export const UpdateMyProfile=async(req,res,next)=>{
+    const{name,email,DOB,phone}=req.body
+    const profile=await User.findById(req.authUser._id)
+    if(!profile){
+        return next(new AppError('user not found'))
+    }
+    profile.name = name
+     profile.DOB = DOB
+    profile.phone = phone 
+    profile.email = email 
+    
+    await profile.save(); // Save the updated user data
+
+   return res.status(200).json({ message: 'Profile updated successfully' });
+ }
