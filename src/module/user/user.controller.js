@@ -111,3 +111,8 @@ await sendEmail({to:email,subject:"forget password" ,html:`<h1>u request forget 
   await User.updateOne({email },{password:hashedPassword,$unset:{otp:"",expireDateOtp:""}})
   return res.status(200).json({message:"pass updated successfully",success:true})
  }
+ //get my profile
+ export const getMyProfile=async(req,res,next)=>{
+    const profiles=await User.find().select("name email phone DOB")
+    return res.status(200).json({message:"profile is recieved successfully",success:true,data:profiles})
+ }
