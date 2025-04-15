@@ -113,6 +113,6 @@ await sendEmail({to:email,subject:"forget password" ,html:`<h1>u request forget 
  }
  //get my profile
  export const getMyProfile=async(req,res,next)=>{
-    const profiles=await User.find().select("name email phone DOB")
+    const profiles=await User.findById(req.authUser._id).select("name email phone DOB")
     return res.status(200).json({message:"profile is recieved successfully",success:true,data:profiles})
  }
