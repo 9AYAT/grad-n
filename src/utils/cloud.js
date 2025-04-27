@@ -9,4 +9,7 @@ dotenv.config({path:path.resolve('./config/.env')})
     })
     export default cloudinary
     
-    
+    export const deleteCloudImage=async(public_id)=>{
+        await cloudinary.uploader.destroy(public_id)
+     }
+     
