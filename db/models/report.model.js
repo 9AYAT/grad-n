@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from "mongoose";
 
 const reportSchema=new Schema({
     image:{
@@ -14,5 +14,10 @@ const reportSchema=new Schema({
         type: String, 
         required: true
       },
+      userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', // بيشاور على جدول الUsers
+        required: true, // كل تقرير مرتبط بمستخدم
+      }
 },{timestamps:true})
 export const Report=model('Report',reportSchema)

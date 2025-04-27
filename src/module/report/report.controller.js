@@ -6,7 +6,8 @@ export const addReport=async(req,res,next)=>{
        const{secure_url,public_id}=await cloudinary.uploader.upload(req.file.path,
         {folder:'hti/report'})
        const reports=new Report({
-        percentage,TumorFound,image:{secure_url,public_id}
+        percentage,TumorFound,
+        image:{secure_url,public_id}
        })
        const report=await reports.save()
        if(!report){
@@ -15,4 +16,14 @@ export const addReport=async(req,res,next)=>{
         return next(new AppError('image not addded',500))
      }
    res.status(201).json({  message: 'Report added successfully!' ,success:true});
+}
+//get
+export const getAllReport=async(req,res,next)=>{
+    const reports = await Report.find({ userId: req.authUser }).sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: reports.length,
+      data: reports,
+    });
 }
