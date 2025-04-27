@@ -6,7 +6,7 @@ export const addReport=async(req,res,next)=>{
        const{secure_url,public_id}=await cloudinary.uploader.upload(req.file.path,
         {folder:'hti/report'})
        const reports=new Report({
-        percentage,TumorFound,image
+        percentage,TumorFound,image:{secure_url,public_id}
        })
        const report=await reports.save()
        if(!report){
