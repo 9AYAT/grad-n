@@ -17,7 +17,7 @@ const reportSchema=new Schema({
       userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', // بيشاور على جدول الUsers
-        required: true, // كل تقرير مرتبط بمستخدم
+         // كل تقرير مرتبط بمستخدم
       }
 },{timestamps:true})
 export const Report=model('Report',reportSchema)
