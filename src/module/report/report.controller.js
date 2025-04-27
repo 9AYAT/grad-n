@@ -20,7 +20,6 @@ export const addReport=async(req,res,next)=>{
 //get
 export const getAllReport=async(req,res,next)=>{
     const reports = await Report.find({ userId: req.authUser._id }).sort({ createdAt: -1 });
-
     res.status(200).json({
       success: true,
       count: reports.length,

@@ -14,10 +14,10 @@ const reportSchema=new Schema({
         type: String, 
         required: true
       },
-      userId: {
+      userId: { 
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User', // بيشاور على جدول الUsers
-         // كل تقرير مرتبط بمستخدم
+        ref: 'User',
+    
       }
 },{timestamps:true})
 export const Report=model('Report',reportSchema)
