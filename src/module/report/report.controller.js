@@ -2,12 +2,14 @@ import { Report } from "../../../db/index.js"
 import cloudinary from "../../utils/cloud.js"
 
 export const addReport=async(req,res,next)=>{
+    const userId = req.authUser._id;
        const{ percentage, TumorFound}=req.body
        const{secure_url,public_id}=await cloudinary.uploader.upload(req.file.path,
         {folder:'hti/report'})
        const reports=new Report({
         percentage,TumorFound,
-        image:{secure_url,public_id}
+        image:{secure_url,public_id},
+        userId
        })
        const report=await reports.save()
        if(!report){
