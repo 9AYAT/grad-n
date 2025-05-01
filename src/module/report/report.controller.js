@@ -4,7 +4,7 @@ import { messages } from "../../utils/constant/messages.js";
 
 export const addReport=async(req,res,next)=>{
     const userId = req.authUser._id;
-       const{ percentage, TumorFoundوbase64Image}=req.body
+       const{ percentage, TumorFound,base64Image}=req.body
        if (!base64Image) {
         return res.status(400).json({ message: "photo is requred"});
       }
