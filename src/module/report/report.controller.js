@@ -1,18 +1,10 @@
 import { Report } from "../../../db/index.js"
 import cloudinary from "../../utils/cloud.js"
-import { messages } from "../../utils/constant/messages.js";
 
 export const addReport=async(req,res,next)=>{
     const userId = req.authUser._id;
-       const{ percentage, TumorFound,base64Image}=req.body
-       if (!base64Image) {
-        return res.status(400).json({ message: "photo is requred"});
-      }
-      let formattedBase64 = base64Image.trim();
-      if (!formattedBase64.startsWith("data:image")) {
-        formattedBase64 = `data:image/png;base64,${formattedBase64}`;
-      }
-       const{secure_url,public_id}=await cloudinary.uploader.upload(formattedBase64,
+       const{ percentage, TumorFound}=req.body
+       const{secure_url,public_id}=await cloudinary.uploader.upload(req.file.path,
         {folder:'hti/report'})
        const reports=new Report({
         percentage,TumorFound,

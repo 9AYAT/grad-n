@@ -11,7 +11,7 @@ export const asynchandler=(fn)=>{
 //global
 export const globalErrorHandling=async(err,req,res,next)=>{
     if(req.failImage){
-        await  deleteCloudImage(req.failImage.public_id)
+        await deleteCloudImage(req.failImage.public_id)
      }
     return res.status(err.statusCode||500).json(
         {message:err.message,success:false})
