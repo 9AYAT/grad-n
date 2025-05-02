@@ -11,18 +11,18 @@ export const addBoneReport=async(req,res,next)=>{
         const userId = req.authUser._id;
     const {
       //image, // base64 string
-      base64,
-      bodyPart,
-      diagnosis,
-      confidence,
-      fractureDegree,
-      explanation,
+      HeatmapImageBase64,
+      BodyPart,
+      Diagnosis,
+      Confidence,
+      Degree,
+      Explanation,
     } = req.body;
 
     if (!base64) {
       return res.status(400).json({ message: 'Invalid or missing image' });
     }
-    const cleanBase64 = base64.replace(/(\r\n|\n|\r)/gm, "").trim();
+    const cleanBase64 = HeatmapImageBase64.replace(/(\r\n|\n|\r)/gm, "").trim();
     const base64WithPrefix = `data:image/png;base64,${cleanBase64}`;
     // ✅ Upload to Cloudinary as PNG
     const uploadResult = await cloudinary.uploader.upload(base64WithPrefix, {
@@ -32,15 +32,15 @@ export const addBoneReport=async(req,res,next)=>{
 
     // ✅ Save to MongoDB
     const bone = new Bone({
-      base64: {
+        HeatmapImageBase64: {
         secure_url: uploadResult.secure_url,
         public_id: uploadResult.public_id,
       },
-      bodyPart,
-      diagnosis,
-      confidence,
-      fractureDegree,
-      explanation,
+      BodyPart,
+      Diagnosis,
+      Confidence,
+      Degree,
+      Explanation,
       userId
     });
    const boneComplete= await bone.save();

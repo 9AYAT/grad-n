@@ -1,28 +1,28 @@
 import mongoose, { model, Schema } from "mongoose";
 
 const boneSchema=new Schema({
-    base64:{
+  HeatmapImageBase64:{
         //type:Object//path
         secure_url:{type:String},
         public_id:{type:String}
     },
-    bodyPart: {
+    BodyPart: {
         type: String, 
         required: true
       },
-      diagnosis: {
+      Diagnosis: {
         type: String, 
         required: true
       },
-      confidence: {
+      Confidence: {
         type: String, 
         required: true
       },
-      fractureDegree: {
+      Degree: {
         type: String, 
         required: true
       },
-      explanation: {
+      Explanation: {
         type: String, 
         required: true
       },
