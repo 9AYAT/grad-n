@@ -22,7 +22,8 @@ export const addBoneReport=async(req,res,next)=>{
     if (!base64) {
       return res.status(400).json({ error: 'Invalid or missing image' });
     }
-    const base64WithPrefix = `data:image/png;base64,${base64}`;
+    const cleanBase64 = base64.replace(/(\r\n|\n|\r)/gm, "").trim();
+    const base64WithPrefix = `data:image/png;base64,${cleanBase64}`;
     // ✅ Upload to Cloudinary as PNG
     const uploadResult = await cloudinary.uploader.upload(base64WithPrefix, {
       folder: 'bones',
