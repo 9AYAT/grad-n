@@ -18,8 +18,7 @@ export const addBoneReport=async(req,res,next)=>{
       Degree,
       Explanation,
     } = req.body;
-
-    if (!base64) {
+    if (!HeatmapImageBase64) {
       return res.status(400).json({ message: 'Invalid or missing image' });
     }
     const cleanBase64 = HeatmapImageBase64.replace(/(\r\n|\n|\r)/gm, "").trim();
