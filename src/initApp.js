@@ -1,5 +1,5 @@
 import { globalErrorHandling } from "./middleware/asynchandler.js"
-import { changeRouter, contactRouter, doctorRouter, reportRouter, userRouter } from "./module/index.js"
+import { boneRouter, changeRouter, contactRouter, doctorRouter, reportRouter, userRouter } from "./module/index.js"
 
 
 //import { globalErrorHandling } from "./utils/appError.js"
@@ -12,6 +12,7 @@ import { changeRouter, contactRouter, doctorRouter, reportRouter, userRouter } f
     app.use('/contact',contactRouter)
     app.use('/doctor',doctorRouter)
     app.use('/report',reportRouter)
+    app.use('/bone',boneRouter)
    app.all("/",(req,res,next)=>{  return res.json({message:"invalid url"})})
     app.use(globalErrorHandling)
  }
