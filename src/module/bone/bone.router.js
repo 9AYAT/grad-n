@@ -8,6 +8,6 @@ import { addBoneReport } from "./bone.controller.js";
 
 const boneRouter=Router()
 boneRouter.post('/bones',isAuthenticated(),isAuthorized(roles.USER),
-cloudUpload({folder:'bone'}).single('base64'),asynchandler(addBoneReport))
+cloudUpload({folder:'bone'}).single('HeatmapImageBase64'),asynchandler(addBoneReport))
 
 export default boneRouter
