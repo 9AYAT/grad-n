@@ -20,7 +20,7 @@ export const addBoneReport=async(req,res,next)=>{
     } = req.body;
 
     if (!base64) {
-      return res.status(400).json({ error: 'Invalid or missing image' });
+      return res.status(400).json({ message: 'Invalid or missing image' });
     }
     const cleanBase64 = base64.replace(/(\r\n|\n|\r)/gm, "").trim();
     const base64WithPrefix = `data:image/png;base64,${cleanBase64}`;
@@ -45,7 +45,8 @@ export const addBoneReport=async(req,res,next)=>{
     });
    const boneComplete= await bone.save();
 if(!boneComplete){
-       return res.status(500).json({ error: 'Failed to process image' });
+        req.failImage={secure_url,public_id}
+        return next(new AppError('image not addded',500))
 }
-    res.status(201).json({ message: 'Image uploaded and bone record created', data: bone });
-  } 
+    res.status(201).json({ message: 'Image uploaded and bone record created', data: boneComplete });
+}
