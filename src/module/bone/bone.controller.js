@@ -26,7 +26,7 @@ export const addBoneReport=async(req,res,next)=>{
     const base64WithPrefix = `data:image/png;base64,${cleanBase64}`;
     // ✅ Upload to Cloudinary as PNG
     const uploadResult = await cloudinary.uploader.upload(base64WithPrefix, {
-      folder: 'bones',
+      folder: 'hti/bones',
       format: 'png', // force conversion to PNG
     });
 
