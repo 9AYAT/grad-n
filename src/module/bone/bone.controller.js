@@ -6,6 +6,7 @@ import express from 'express';
 import fs from 'fs';
 import cloudinary from '../../utils/cloud.js';
 import { Bone } from '../../../db/index.js';
+import { report } from 'process';
 
 export const addBoneReport=async(req,res,next)=>{
         const userId = req.authUser._id;
@@ -48,4 +49,14 @@ if(!boneComplete){
         return next(new AppError('image not addded',500))
 }
     res.status(201).json({ message: 'Image uploaded and bone record created', data: boneComplete });
+}
+//get allbones 
+export const getAllBones=async(req,res,next)=>{
+    const userId = req.authUser._id;
+    const reportBones = await Bone.find({ userId }).sort({ createdAt: -1 });
+    res.status(200).json({
+      success: true,
+      count: reportBones.length,
+      data: reportBones,
+    });
 }
