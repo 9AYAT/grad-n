@@ -6,10 +6,19 @@ import cors from 'cors';
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
 const app=express()
+//app.use(cors({
+  //  origin: 'http://localhost:4200',
+   // credentials: true 
+//}));
+
 app.use(cors({
-    origin: 'http://localhost:4200',
-    credentials: true 
-}));
+    origin: function (origin, callback) {
+      callback(null, origin || '*'); // يسمح بأي origin
+    },
+    credentials: true, // يدعم التوكنات والكوكيز
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  }));
 app.use(bodyParser.json());
 dotenv.config({path:path.resolve('./config/.env')})
 connectDb()
