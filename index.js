@@ -6,10 +6,17 @@ import cors from 'cors';
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
 const app=express()
+//app.use(cors({
+ // origin: 'http://localhost:4200',
+  // credentials: true 
+//}));
 app.use(cors({
-  origin: 'http://localhost:4200',
-   credentials: true 
+  origin: "*", // للسماح بالوصول من أي مكان (Flutter, web)
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 }));
+
 app.use(bodyParser.json());
 dotenv.config({path:path.resolve('./config/.env')})
 connectDb()
