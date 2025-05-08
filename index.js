@@ -11,10 +11,10 @@ const app=express()
   // credentials: true 
 //}));
 app.use(cors({
-  origin: "*", // للسماح بالوصول من أي مكان (Flutter, web)
+  //origin: "*", // للسماح بالوصول من أي مكان (Flutter, web)
+   origin: ['http://localhost:4200'],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
 }));
 
 app.use(bodyParser.json());
