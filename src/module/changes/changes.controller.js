@@ -14,11 +14,10 @@ export const changePassword=async(req,res,next)=>{
    if (oldPassword === newPassword) {
     return next(new AppError('New password must be different', 400));
   }
-  //hash password
+   //hash password
  const hashedPassword=bcrypt.hashSync(newPassword,8)
  //update
  await User.updateOne({_id:userId},{password:hashedPassword})
  //send res
  return res.status(200).json({message:messages.user.updatedsuccessfully,success:true})
-     
 }
