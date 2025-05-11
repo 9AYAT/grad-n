@@ -6,13 +6,19 @@ import cors from 'cors';
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
 const app=express()
+//app.use(cors({
+ // origin: 'http://localhost:4200',
+   //credentials: true 
+//}));
 app.use(cors({
-  origin: 'http://localhost:4200',
-   credentials: true 
+  origin: [
+    'http://localhost:4200',
+    'https://mazenelnosery1.github.io'
+  ],
+  credentials: true
 }));
 //app.use(cors({
   //origin: "*", // للسماح بالوصول من أي مكان (Flutter, web)
-  // origin: ['http://localhost:4200'],
   //methods: ["GET", "POST", "PUT", "DELETE"],
  // allowedHeaders: ["Content-Type", "Authorization"],
 //}));
